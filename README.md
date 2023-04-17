@@ -1,11 +1,10 @@
-# Method of the month: The Newey-West estimator and interrupted time series
-A ten-minute rough-and-ready talk introducing the Newey-West
-heteroskedasticity- and autocorrelation-robust estimator for a non-technical
-audience and assessing how useful it is for interrupted time series
-analysis of health policy interventions.
+# ACI Data Collab CoP - Pandemic-related disruptions in health services and data. Tracing causes and effects.
+Health data from March 2020 onwards bear the traces of the COVID-19 pandemic. What happened and how should we deal with it in our studies?
 
-Delivered to the Medicines Policy Research Unit monthly Work In Progress
-meeting on 20 May 2021.
+A 20-minute talk covering antibiotics, antidepressants, population estimates and epidemiological methods.
+
+Delivered to the Agency for Clinical Innovation Data Collab Community of Practice
+meeting on 27 April 2023.
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
