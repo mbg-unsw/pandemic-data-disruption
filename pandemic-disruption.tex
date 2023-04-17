@@ -1,0 +1,60 @@
+% COVID-19-related disruptions in health services and data
+% (c) 2023 Malcolm Gillies <malcolm.gillies@unsw.edu.au>
+% https://github.com/mbg-unsw/pandemic-data-disruption
+%
+% This work is licensed under a
+% Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+% International Licence
+\documentclass[aspectratio=169,12pt]{beamer} % XXXX fix AR here
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usefonttheme{serif} % need this with Charter font
+\usetheme{Berlin}  % using default now
+\usecolortheme{beaver}  % using default now
+\usepackage[libertine]{libertine} % not using osf (old-style figures)
+\usepackage[scale=0.9]{tgheros} % scale to match libertine
+\usepackage[varqu,varl]{inconsolata}
+\usepackage[libertine]{newtxmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tikzpagenodes}
+\usepackage{natbib}
+\usepackage{gitinfo2}
+
+\renewcommand{\gitMark}{\color{gray}\texttt{\tiny\gitBranch\,@\,\gitAbbrevHash\,\gitAuthorDate}}
+
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols
+\setbeamercolor*{item}{fg=darkred}
+
+\title{COVID-19-related disruptions in health services and data: Tracing causes and effects}
+\author{Malcolm Gillies}
+\date{27 April 2023}
+\usebackgroundtemplate{%
+\begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south west,scale=1,rotate=90] at ([shift={(0cm,0cm)}]current page marginpar area.south east) {\gitMark};
+\end{tikzpicture}%
+}
+\begin{document}
+
+{
+%\usebackgroundtemplate{}
+\begin{frame}
+\titlepage
+\end{frame}
+}
+
+\begin{frame}{Thanks}
+    \begin{itemize}
+        \item Andrea
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{References}
+%        \bibliographystyle{apalike}
+%        \bibliographystyle{abbrv}
+        \tiny\bibliography{pandemic-disruption.bib}
+        \bibliographystyle{abbrvnat}
+\end{frame}
+
+\end{document}
