@@ -18,6 +18,7 @@
 \usepackage[libertine]{newtxmath}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usetikzlibrary{shadows}
 \usepackage{tikzpagenodes}
 \usepackage{natbib}
 \usepackage{gitinfo2}
@@ -35,6 +36,52 @@
     \node[anchor=south west,scale=1,rotate=90] at ([shift={(0cm,0cm)}]current page marginpar area.south east) {\gitMark};
 \end{tikzpicture}%
 }
+
+\newif\ifsidebartheme
+\sidebarthemefalse
+
+\newdimen\contentheight
+\newdimen\contentwidth
+\newdimen\contentleft
+\newdimen\contentbottom
+\makeatletter
+\newcommand*{\calculatespace}{%
+    \contentheight=\paperheight%
+    \ifx\beamer@frametitle\@empty%
+        \setbox\@tempboxa=\box\voidb@x%
+      \else%
+        \setbox\@tempboxa=\vbox{%
+          \vbox{}%
+          {\parskip0pt\usebeamertemplate***{frametitle}}%
+        }%
+        \ifsidebartheme%
+          \advance\contentheight by-1em%
+        \fi%
+      \fi%
+    \advance\contentheight by-\ht\@tempboxa%
+    \advance\contentheight by-\dp\@tempboxa%
+    \advance\contentheight by-\beamer@frametopskip%
+    \ifbeamer@plainframe%
+    \contentbottom=0pt%
+    \else%
+    \advance\contentheight by-\headheight%
+    \advance\contentheight by\headdp%
+    \advance\contentheight by-\footheight%
+    \advance\contentheight by4pt%
+    \contentbottom=\footheight%
+    \advance\contentbottom by-4pt%
+    \fi%
+    \contentwidth=\paperwidth%
+    \ifbeamer@plainframe%
+    \contentleft=0pt%
+    \else%
+    \advance\contentwidth by-\beamer@rightsidebar%
+    \advance\contentwidth by-\beamer@leftsidebar\relax%
+    \contentleft=\beamer@leftsidebar%
+    \fi%
+}
+\makeatother
+
 \begin{document}
 
 {
@@ -66,6 +113,7 @@
 \begin{frame}{Results: Changes in primary care consultation rates}
 \centering
 \includegraphics{ref/latex-suppmbs-1.pdf}
+\nocite{gillies_2022}
 \end{frame}
 
 \begin{frame}{Results: Changes in antibiotic dispensing}
@@ -99,6 +147,10 @@
 	\begin{flushright}\tiny\texttt{\url{https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population}}\end{flushright}
 \end{frame}
 
+\begin{frame}{Antidepressant use}
+	\nocite{costa_2023}
+\end{frame}
+
 \begin{frame}{Net overseas migration: PBS/MBS eligibility?}
 	\center\includegraphics[height=0.75\textheight]{ref/pops-nom.pdf}
 	\begin{flushright}\tiny\texttt{\url{https://www.abs.gov.au/statistics/people/population/migration-australia/latest-release}}\end{flushright}
@@ -111,6 +163,26 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Some ideas about what to do}
+\calculatespace%
+\begin{columns}
+\begin{column}{0.20\contentwidth}
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (0,0) {\includegraphics[width=\textwidth]{ref/butler_sm.png}};
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.70\contentwidth}
+	\begin{itemize}
+		\item A.~M. Butler, M.~Burcu, J.~B. Christian, F.~Tian,
+		\emph{et al.} Noninterventional studies in the {COVID-19} era:
+		methodological considerations for study design \& analysis. \\
+		\emph{J Clin Epi}, 153:\penalty0 91--101, 2023.
+\nocite{butler_2023}
+	\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
 \begin{frame}{Thanks}
     \begin{itemize}
         \item Australian Government Services Australia for providing the data
@@ -118,8 +190,6 @@
 	\item MIRP crew
 	\item Melisa Litchfield for assisting with data access and ethics approval
     \end{itemize}
-\vfill
-	Published in \emph{Br J Clin Pharmacol} 2021 doi:\href{https://doi.org/10.1111/bcp.15000}{10.1111/bcp.15000}
 \end{frame}
 
 \begin{frame}{References}
