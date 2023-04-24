@@ -6,16 +6,19 @@
 % Creative Commons Attribution-NonCommercial-ShareAlike 4.0
 % International Licence
 \documentclass[aspectratio=169,12pt]{beamer} % XXXX fix AR here
-\usepackage[latin1]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usefonttheme{serif} % need this with Charter font
-\usetheme{Berlin}  % using default now
-\usecolortheme{beaver}  % using default now
-\usepackage[libertine]{libertine} % not using osf (old-style figures)
-\usepackage[scale=0.9]{tgheros} % scale to match libertine
-\usepackage[varqu,varl]{inconsolata}
-\usepackage[libertine]{newtxmath}
+\usepackage{pgfpages}
+\usepackage{fancyvrb}
+\usepackage{pgfplots}
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{textcomp}
+%\usefonttheme{serif} % need this with Charter font
+\usetheme{auriga}  % using default now
+\usecolortheme{auriga}  % using default now
+%\usepackage[libertine]{libertine} % not using osf (old-style figures)
+%\usepackage[scale=0.9]{tgheros} % scale to match libertine
+%\usepackage[varqu,varl]{inconsolata}
+%\usepackage[libertine]{newtxmath}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shadows}
@@ -23,21 +26,26 @@
 \usepackage{natbib}
 \usepackage{gitinfo2}
 
-\renewcommand{\gitMark}{\color{gray}\texttt{\tiny\gitBranch\,@\,\gitAbbrevHash\,\gitAuthorDate}}
+\pgfplotsset{compat=1.17}
+\hypersetup{pdfencoding=auto}
 
-\renewcommand{\bibsection}{} % suppress "References" section
+\renewcommand{\gitMark}{\color{lightgray}\texttt{\tiny\gitBranch\,@\,\gitAbbrevHash\,\gitAuthorDate}}
 
-\setbeamertemplate{navigation symbols}{} % remove navigation symbols
-\setbeamercolor*{item}{fg=darkred}
+%\renewcommand{\bibsection}{} % suppress "References" section
+
+%\setbeamertemplate{navigation symbols}{} % remove navigation symbols
+%\setbeamercolor*{item}{fg=darkred}
 
 \title{COVID-19-related disruptions in health services and data: Tracing causes and effects}
 \author{Malcolm Gillies <malcolm.gillies@unsw.edu.au>}
-\date{27 April 2023}
+\institute{27 April 2023}
 \usebackgroundtemplate{%
+\includegraphics[width=\paperwidth]{ref/micre-blank.PNG}
 \begin{tikzpicture}[remember picture,overlay]
-    \node[anchor=south west,scale=1,rotate=90] at ([shift={(0cm,0cm)}]current page marginpar area.south east) {\gitMark};
+    \node[anchor=south east,scale=1,rotate=90] at ([shift={(0cm,0cm)}]current page marginpar area.north east) {\gitMark};
 \end{tikzpicture}%
 }
+
 
 \newif\ifsidebartheme
 \sidebarthemefalse
@@ -86,11 +94,14 @@
 
 \begin{document}
 
+\setbeamercolor{page number in head/foot}{fg=white}
+
 {
-%\usebackgroundtemplate{}
-\begin{frame}
-\titlepage
-\end{frame}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{ref/micre.PNG}}
+\setbeamercolor{title page}{fg=white}
+  \begin{frame}[plain]
+    \titlepage
+  \end{frame}
 }
 
 \begin{frame}{Outline}
@@ -210,7 +221,7 @@
 \begin{frame}{Approaches to characterise or mitigate bias}
 \calculatespace%
 \begin{columns}
-\begin{column}{0.50\contentwidth}
+\begin{column}{0.45\contentwidth}
 	\begin{itemize}
 		\item Assess confounder temporal trends
 		\item Consider missing data strategies
@@ -220,7 +231,7 @@
 		\item Adjust for COVID-19 status
 	\end{itemize}
 \end{column}
-\begin{column}{0.50\contentwidth}
+\begin{column}{0.45\contentwidth}
 	\begin{itemize}
 		\item Account for calendar time
 		\item Account for factors with differential COVID-19 impact
